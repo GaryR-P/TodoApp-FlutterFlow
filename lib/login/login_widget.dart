@@ -748,6 +748,14 @@ class _LoginWidgetState extends State<LoginWidget>
                       ),
                   ],
                 ),
+                Text(
+                  'Check Tasks Right of Your List!',
+                  style: FlutterFlowTheme.of(context).titleLarge.override(
+                        fontFamily: 'Inter',
+                        color: FlutterFlowTheme.of(context).secondary,
+                        letterSpacing: 0.0,
+                      ),
+                ),
               ],
             ),
           ),
