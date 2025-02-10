@@ -112,6 +112,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'taskdoc',
               ParamType.Document,
             ),
+            title: params.getParam(
+              'title',
+              ParamType.String,
+            ),
+            details: params.getParam(
+              'details',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
