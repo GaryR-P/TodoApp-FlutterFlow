@@ -146,17 +146,37 @@ class _TasksWidgetState extends State<TasksWidget> {
                         itemBuilder: (context, listViewIndex) {
                           final listViewTasksRecord =
                               listViewTasksRecordList[listViewIndex];
-                          return TaskWidget(
-                            key: Key(
-                                'Keyby8_${listViewIndex}_of_${listViewTasksRecordList.length}'),
-                            taskText: listViewTasksRecord.title,
-                            completed: listViewTasksRecord.completed,
-                            checkAction: () async {
-                              await listViewTasksRecord.reference
-                                  .update(createTasksRecordData(
-                                completed: true,
-                              ));
+                          return InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                'details',
+                                queryParameters: {
+                                  'taskdoc': serializeParam(
+                                    listViewTasksRecord,
+                                    ParamType.Document,
+                                  ),
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'taskdoc': listViewTasksRecord,
+                                },
+                              );
                             },
+                            child: TaskWidget(
+                              key: Key(
+                                  'Keyby8_${listViewIndex}_of_${listViewTasksRecordList.length}'),
+                              taskText: listViewTasksRecord.title,
+                              completed: listViewTasksRecord.completed,
+                              checkAction: () async {
+                                await listViewTasksRecord.reference
+                                    .update(createTasksRecordData(
+                                  completed: true,
+                                ));
+                              },
+                            ),
                           );
                         },
                       );

@@ -11,9 +11,18 @@ class DetailsWidget extends StatefulWidget {
   const DetailsWidget({
     super.key,
     required this.taskdoc,
-  });
+    String? title,
+    String? details,
+  })  : title = title ?? 'title',
+        details = details ?? 'details';
 
   final TasksRecord? taskdoc;
+
+  /// title
+  final String title;
+
+  /// details
+  final String details;
 
   @override
   State<DetailsWidget> createState() => _DetailsWidgetState();
